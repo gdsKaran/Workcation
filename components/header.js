@@ -13,7 +13,7 @@ const navigation = [
 export default function Header() {
   const pathname = usePathname();
   return (
-    <header className="absolute inset-x-0 top-0 z-50">
+    <header className="absolute inset-x-0 top-0 z-10">
       <nav
         aria-label="Global"
         className="flex items-center justify-between p-6 lg:px-8"
@@ -30,6 +30,7 @@ export default function Header() {
 
             {/* Logo */}
             <Image
+              priority
               width={0}
               height={0}
               sizes="(max-width: 768px) 100vw, 33vw"

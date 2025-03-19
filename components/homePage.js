@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export default function HomePage() {
   const { scrollY } = useScroll();
-  const scale = useTransform(scrollY, [0, 300, 700], [1, 1.2, 1]);
+  const scale = useTransform(scrollY, [0, 300], [1, 1.2]);
 
   return (
     <>

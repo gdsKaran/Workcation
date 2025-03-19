@@ -19,3 +19,124 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Add this to your CSS file */
+
+/* Base styles for event cards */
+.event-card {
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s ease;
+}
+
+/* Description container with scrollbar customization */
+.event-card .overflow-y-auto {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(79, 70, 229, 0.3) transparent;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.event-card .overflow-y-auto::-webkit-scrollbar {
+  width: 4px;
+}
+
+.event-card .overflow-y-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.event-card .overflow-y-auto::-webkit-scrollbar-thumb {
+  background-color: rgba(79, 70, 229, 0.3);
+  border-radius: 20px;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 1280px) {
+  .event-card {
+    height: 580px;
+  }
+  
+  .event-card > div:first-child {
+    height: 200px;
+  }
+  
+  .event-card > div:last-child {
+    height: 380px;
+  }
+  
+  .event-card .overflow-y-auto {
+    max-height: 170px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .event-card {
+    height: 550px;
+  }
+  
+  .event-card > div:first-child {
+    height: 180px;
+  }
+  
+  .event-card > div:last-child {
+    height: 370px;
+  }
+  
+  .event-card .overflow-y-auto {
+    max-height: 160px;
+  }
+}
+
+@media (max-width: 768px) {
+  .event-card {
+    height: 520px;
+  }
+  
+  .event-card > div:first-child {
+    height: 170px;
+  }
+  
+  .event-card > div:last-child {
+    height: 350px;
+  }
+  
+  .event-card .overflow-y-auto {
+    max-height: 150px;
+  }
+}
+
+@media (max-width: 640px) {
+  .event-card {
+    height: 480px;
+  }
+  
+  .event-card > div:first-child {
+    height: 160px;
+  }
+  
+  .event-card > div:last-child {
+    height: 320px;
+  }
+  
+  .event-card .overflow-y-auto {
+    max-height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .event-card {
+    height: 450px;
+  }
+  
+  .event-card > div:first-child {
+    height: 140px;
+  }
+  
+  .event-card > div:last-child {
+    height: 310px;
+  }
+  
+  .event-card .overflow-y-auto {
+    max-height: 110px;
+  }
+}
