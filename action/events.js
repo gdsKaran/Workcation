@@ -1,6 +1,5 @@
 "use server";
-import { ObjectId } from "mongodb";
-import { notFound, redirect } from "next/navigation";
+
 import { connectToDatabase } from "@/lib/db";
 
 export async function getEvents() {
@@ -65,5 +64,3 @@ export async function addEventsDetails(formData) {
     _id: result.insertedId.toString(),
   };
 }
-
-//fix description area size,add UI potimisation

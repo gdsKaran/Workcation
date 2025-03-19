@@ -88,8 +88,9 @@ export default function DiffEvents({ events: initialEvents }) {
     // Initialize all text elements as invisible
     const initialAnimState = {};
     events.forEach((post) => {
-      initialAnimState[`title-${post.id}`] = false;
-      initialAnimState[`desc-${post.id}`] = false;
+      const postId = post.id || post._id;
+      initialAnimState[`title-${postId}`] = false;
+      initialAnimState[`desc-${postId}`] = false;
     });
     setTextAnimState(initialAnimState);
 
