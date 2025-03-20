@@ -37,15 +37,18 @@ export default function DiffEvents({ events: initialEvents }) {
     try {
       const result = await addEventsDetails(newEventData);
 
-      if (result.errors) {
-        setErrors(result.errors); // Set validation errors
+      if (!result.success || result.errors) {
+        setErrors(result.errors || { general: "Unknown error occurred" });
         return;
       }
 
       const newEvent = {
         ...newEventData,
-        _id:
-          typeof result._id === "string" ? result._id : result._id.toString(),
+        _id: result._id
+          ? typeof result._id === "string"
+            ? result._id
+            : result._id.toString()
+          : `error-${Date.now()}`,
       };
 
       setEvents((currentEvents) => [

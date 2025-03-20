@@ -56,11 +56,25 @@ export async function addEventsDetails(formData) {
     return { success: false, errors };
   }
 
-  const result = await storeEvent(formData);
+  try {
+    const result = await storeEvent(formData);
 
-  return {
-    success: result.acknowledged,
-    insertedId: result.insertedId.toString(),
-    _id: result.insertedId.toString(),
-  };
+    if (result && result.insertedId) {
+      return {
+        success: true,
+        _id: result.insertedId.toString(),
+      };
+    } else {
+      return {
+        success: false,
+        errors: { general: "Failed to insert document properly" },
+      };
+    }
+  } catch (error) {
+    console.error("Error in addEventsDetails:", error);
+    return {
+      success: false,
+      errors: { general: "Server error occurred" },
+    };
+  }
 }
