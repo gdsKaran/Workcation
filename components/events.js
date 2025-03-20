@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import EventPanel from "./createEventPanel";
 import { addEventsDetails } from "@/action/events";
 
-export default function DiffEvents({ events: initialEvents }) {
+export default function DiffEvents({ events: initialEvents = [] }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [textAnimState, setTextAnimState] = useState({});
   const [activeFilter, setActiveFilter] = useState("all");
@@ -91,7 +91,7 @@ export default function DiffEvents({ events: initialEvents }) {
     // Initialize all text elements as invisible
     const initialAnimState = {};
     events.forEach((post) => {
-      const postId = post.id || post._id;
+      const postId = post._id;
       initialAnimState[`title-${postId}`] = false;
       initialAnimState[`desc-${postId}`] = false;
     });
@@ -107,14 +107,14 @@ export default function DiffEvents({ events: initialEvents }) {
         setTimeout(() => {
           setTextAnimState((prev) => ({
             ...prev,
-            [`title-${post.id}`]: true,
+            [`title-${post._id}`]: true,
           }));
 
           // Animate description after title
           setTimeout(() => {
             setTextAnimState((prev) => ({
               ...prev,
-              [`desc-${post.id}`]: true,
+              [`desc-${post._id}`]: true,
             }));
           }, 500); // Delay between title and description animations
         }, baseDelay);
@@ -367,7 +367,7 @@ export default function DiffEvents({ events: initialEvents }) {
                   <div className="overflow-hidden">
                     <h3
                       className={`text-2xl font-bold transition-all duration-800 ease-out ${
-                        textAnimState[`title-${post.id}`]
+                        textAnimState[`title-${post._id}`]
                           ? "opacity-100 translate-y-0"
                           : "opacity-0 translate-y-12"
                       }`}
@@ -389,7 +389,7 @@ export default function DiffEvents({ events: initialEvents }) {
                   >
                     <p
                       className={`text-base leading-relaxed text-gray-600 transition-all duration-800 ease-out ${
-                        textAnimState[`desc-${post.id}`]
+                        textAnimState[`desc-${post._id}`]
                           ? "opacity-100 translate-x-0"
                           : "opacity-0 -translate-x-16"
                       }`}

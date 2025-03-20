@@ -8,7 +8,7 @@ export default async function Events() {
   return (
     <>
       <Header />
-      <DiffEvents events={events} />
+      <DiffEvents events={events || []} />
     </>
   );
 }
