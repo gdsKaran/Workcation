@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useOptimistic, useTransition } from "react";
+import React, { startTransition, useOptimistic, useTransition } from "react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import EventPanel from "./createEventPanel";
@@ -28,7 +28,7 @@ export default function DiffEvents({ events: initialEvents = [] }) {
       _id: tempId,
     };
 
-    startTranscation(() => {
+    startTransition(() => {
       setOptimisticEvents(optimisiticEvent);
     });
 
