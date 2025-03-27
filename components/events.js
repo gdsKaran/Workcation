@@ -11,7 +11,7 @@ export default function DiffEvents({ events: initialEvents = [] }) {
   const [textAnimState, setTextAnimState] = useState({});
   const [activeFilter, setActiveFilter] = useState("all");
   const [events, setEvents] = useState(initialEvents);
-  const [filteredEvents, setFilteredEvents] = useState(events);
+
   const [eventState, setEventState] = useState(false);
   const [isPending, startTransition] = useTransition();
   const [optimisticEvents, setOptimisticEvents] = useOptimistic(
@@ -20,7 +20,7 @@ export default function DiffEvents({ events: initialEvents = [] }) {
       return [...currentEvents, newEvents];
     }
   );
-
+  const [filteredEvents, setFilteredEvents] = useState(optimisticEvents);
   async function handleOptimistic(newEventData) {
     const tempId = `temp-${Math.random().toString(36).substring(2, 15)}`;
     const optimisiticEvent = {
