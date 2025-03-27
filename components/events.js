@@ -13,7 +13,7 @@ export default function DiffEvents({ events: initialEvents = [] }) {
   const [events, setEvents] = useState(initialEvents);
   const [filteredEvents, setFilteredEvents] = useState(events);
   const [eventState, setEventState] = useState(false);
-  const [isPending, startTranscation] = useTransition();
+  const [isPending, startTransition] = useTransition();
   const [optimisticEvents, setOptimisticEvents] = useOptimistic(
     events,
     (currentEvents, newEvents) => {
